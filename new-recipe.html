@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <title>Admin : add new</title>
+</head>
+<body>
+    <section id="add-new">
+        <div class="container">
+            <a href="admin.html" class="arrow"> < Back to recipes </a>
+            <form action="???" method="POST" class="dflex fdcolumn">
+                <div class="dflex">
+                    <div class="form-wrapper">
+                        <div class="dflex fdcolumn">
+                            <label for="title">Recipe title</label>
+                            <input type="text" name="title" id="title">
+                        </div>
+                        <div class="dflex fdcolumn">
+                            <label for="description">Quick recipe description</label>
+                            <textarea name="description" id="description" cols="30" rows="5"></textarea>
+                        </div>
+                        <div class="dflex fdcolumn">
+                            <label for="ingredients">Ingredients list</label>
+                            <textarea name="ingredients" id="ingredients" cols="30" rows="5"></textarea>
+                        </div>
+                        <div class="dflex fdcolumn">
+                            <label for="instructions">Instructions</label>
+                            <textarea name="instructions" id="instructions" cols="30" rows="5"></textarea>
+                        </div>
+                        <div class="dflex fdcolumn">
+                            <label for="timing">Cooking time</label>
+                            <input type="timing" name="timing" id="timing">
+                        </div>
+                    </div>
+                    <div class="form-wrapper">
+                        <p class="label">Choose a category:</p>
+                        <div class="dflex fdcolumn radio-wrapper">
+                            <div>
+                                <input type="radio" id="cakes"
+                                name="category" value="cakes">
+                                <label for="cakes">Cakes</label>
+                            </div>                           
+                            <div>
+                                <input type="radio" id="cookies"
+                                name="category" value="cookies">
+                                <label for="cookies">Cookies</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="cupcakes"
+                                name="category" value="cupcakes">
+                                <label for="cupcakes">Cupcakes</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="pies"
+                                name="category" value="pies">
+                                <label for="pies">Pies</label>
+                            </div>
+                        </div>
+                        <p class="label">Load an image</p>
+                        <a href="#" class="arrow yellow">Choose an image</a>
+                    </div>
+                </div>
+                <input type="submit" name="submit" value="Add the recipe +" class="add-input">
+            </form>
+        </div>
+    </section>
+</body>
+</html>
