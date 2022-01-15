@@ -24,8 +24,8 @@ ob_start();
 <body>
     <section id="add-new">
         <div class="container">
-            <a href="admin.php" class="arrow"> < Back to recipes </a>
-            <form action="dbnew-recipe.php" method="POST" class="dflex fdcolumn" enctype="multipart/form-data">
+            <a href="admin.php" class="arrow">< Back to recipes </a>
+            <form action="dbupdate.php" method="POST" class="dflex fdcolumn" enctype="multipart/form-data">
                 <div class="dflex">
                     <div class="form-wrapper">
                         <input type="hidden" name="id_recipe" id="id_recipe" value="<?= $recipe['id_recipe']?>">
@@ -39,11 +39,11 @@ ob_start();
                         </div>
                         <div class="dflex fdcolumn">
                             <label for="ingredients">Modify the ingredients list</label>
-                            <textarea name="ingredients" id="ingredients" cols="30" rows="5"> <?= $recipe['ingredients']?> </textarea>
+                            <textarea name="ingredients" id="ingredients" cols="30" rows="5"><?= $recipe['ingredients']?></textarea>
                         </div>
                         <div class="dflex fdcolumn">
                             <label for="instructions">Modify the instructions</label>
-                            <textarea name="instructions" id="instructions" cols="30" rows="5"> <?= $recipe['instructions']?> </textarea>
+                            <textarea name="instructions" id="instructions" cols="30" rows="5"><?= $recipe['instructions']?></textarea>
                         </div>
                         <div class="dflex fdcolumn">
                             <label for="timing">Change the cooking time</label>

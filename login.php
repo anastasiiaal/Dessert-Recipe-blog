@@ -1,3 +1,12 @@
+<?php
+require_once 'connect.php';
+
+$user = $db->query('SELECT * FROM `admin`');
+$user = $user->fetch(PDO::FETCH_ASSOC);
+
+ob_start();
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +17,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
-    <title>Admin - Log in</title>
+    <title>Log in</title>
 </head>
 <body>
     <section id="login">
         <div class="container dflex">
-            <form action="???" method="POST">
+            <form action="dblogin.php" method="POST">
                 <div class="form-wrapper">
                     <div>
                         <label for="login">Your login</label>

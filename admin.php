@@ -22,7 +22,7 @@ ob_start();
     <main>
         <section id="admin-main">
             <div class="container">
-                <nav class="nav__category">
+                <nav class="nav__category dflex">
                     <ul>
                         <li>
                             Filter:
@@ -34,6 +34,12 @@ ob_start();
                             <a href="#" class="category-active">The oldest recipes</a>
                         </li>
                     </ul>
+                    <div class="logout">
+                        <a href="#" class="dflex">
+                            <img src="img/logout.svg" alt="Log out">
+                            <p class="p-id">Log out</p>
+                        </a>
+                    </div>
                 </nav>
                 <a href="new-recipe.php" class="admin-btn add-btn">Add new recipe +</a>
                 
