@@ -1,3 +1,11 @@
+<?php
+require_once 'connect.php';
+
+$blog = $db->query('SELECT recipe.id_recipe, recipe.title, recipe.photo, recipe.alt_photo, recipe.prep_time, category.id_category, category.name_category FROM recipe INNER JOIN category ON recipe.category = category.id_category ORDER BY id_recipe ASC');
+
+ob_start();
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +31,7 @@
                     </li>
                     <li>
                         <figure>
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img src="img/logo.svg" alt="Logo">
                             </a>
                         </figure>
@@ -83,60 +91,41 @@
                         </p>
                     </a>
                 </div>
-                <a href="catalogue.html" class="arrow">See all recipes ></a>
+                <a href="catalogue.php" class="arrow">See all recipes ></a>
             </div>
         </section>
         <section class="latest">
             <div class="container dflex fdcolumn">
                 <h2 class="tac">Latest recipes</h2>
                 <div class="latest__card-wrapper dflex">
+
+<?php
+while ($recipe = $blog->fetch(PDO::FETCH_ASSOC)) {
+?>
+
                     <div class="recipe-card dflex fdcolumn">
-                        <img src="img/recipe01.jpg" alt="Recipe photo">
+                        <img src="<?=$recipe['photo']?>" alt="<?=$recipe['alt_photo']?>">
                         <div class="recipe-card__text">
-                            <h3>No Bake White Chocolate Cheesecake</h3>
+                            <h3><?=$recipe['title']?></h3>
                             <a href="#">
                                 <p class="card-category">
-                                    cakes
+                                    <?=$recipe['name_category']?>
                                 </p>
                             </a>
                             <p class="card-time">
-                                Cooking time: 30 min
+                                Cooking time: <?=$recipe['prep_time']?>
                             </p>
-                            <a href="recipe.html" class="arrow yellow">See the recipe ></a>
+                            <a href="recipe.php?id=<?=$recipe['id_recipe']?>" class="arrow yellow">See the recipe ></a>
                         </div>
                     </div>
-                    <div class="recipe-card dflex fdcolumn">
-                        <img src="img/recipe01.jpg" alt="Recipe photo">
-                        <div class="recipe-card__text">
-                            <h3>No Bake White Chocolate Cheesecake</h3>
-                            <a href="#">
-                                <p class="card-category">
-                                    cakes
-                                </p>
-                            </a>
-                            <p class="card-time">
-                                Cooking time: 30 min
-                            </p>
-                            <a href="recipe.html" class="arrow yellow">See the recipe ></a>
-                        </div>
-                    </div>
-                    <div class="recipe-card dflex fdcolumn">
-                        <img src="img/recipe01.jpg" alt="Recipe photo">
-                        <div class="recipe-card__text">
-                            <h3>No Bake White Chocolate Cheesecake</h3>
-                            <a href="#">
-                                <p class="card-category">
-                                    cakes
-                                </p>
-                            </a>
-                            <p class="card-time">
-                                Cooking time: 30 min
-                            </p>
-                            <a href="recipe.html" class="arrow yellow">See the recipe ></a>
-                        </div>
-                    </div>
+<?php
+}  
+// $content = ob_get_clean();
+// require 'views/template.php';
+?>
+
                 </div>
-                <a href="catalogue.html" class="arrow">See all recipes ></a>
+                <a href="catalogue.php" class="arrow">See all recipes ></a>
             </div>
         </section>
     </main>

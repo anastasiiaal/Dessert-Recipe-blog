@@ -1,3 +1,17 @@
+<?php
+require_once 'connect.php';
+
+$id = $_GET['id'];
+
+$recipe = $db->query("SELECT recipe.id_recipe, recipe.title, recipe.description, recipe.photo, recipe.alt_photo, recipe.prep_time FROM recipe WHERE recipe.id_recipe = '$id'");
+$recipe = $recipe->fetch(PDO::FETCH_ASSOC);
+
+$blog = $db->query('SELECT recipe.id_recipe, recipe.title, recipe.photo, recipe.alt_photo, recipe.prep_time, category.id_category, category.name_category FROM recipe INNER JOIN category ON recipe.category = category.id_category');
+$other = $blog->fetch(PDO::FETCH_ASSOC);
+
+// ob_start();
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,12 +57,12 @@
             <div class="container">
                 <div class="recipe__description dflex">
                     <figure>
-                        <img src="img/recipe01.jpg" alt="Recipe">
+                        <img src="<?=$recipe['photo']?>" alt="<?=$recipe['alt_photo']?>">
                     </figure>
                     <div class="recipe__text dflex fdcolumn">
-                        <h2>No Bake White Chocolate Cheesecake</h2>
+                        <h2><?=$recipe['title']?></h2>
                         <p class="p-description">
-                            Sweet and beautifully creamy with just the right amount of salty, crunchy biscuit base, this No Bake White Chocolate Cheesecake is a fantastic dessert, perfect for Mother’s Day or even Easter Sunday. I’ve made no-bake cheesecakes before that need gelatine to set. Will this one set? <br> The beautiful thing about this cheesecake is that a perfect set is guaranteed because of the addition of the chocolate. In fact, I’d go as far as to say that you could even use this as a base for other no-bake cheesecakes. 
+                            <?=$recipe['description']?> 
                         </p>
                         <a href="#">
                             <p class="card-category">
@@ -56,7 +70,7 @@
                             </p>
                         </a>
                         <p class="card-time">
-                            Cooking time: 30 min
+                            Cooking time: <?=$recipe['prep_time']?>
                         </p>
                     </div>
                 </div>
@@ -92,6 +106,13 @@
                     <aside class="similar">
                         <h3>You might also like:</h3>
                         <div class="dflex fdcolumn">
+
+<?php
+
+for($i=1;$i<=2;$i++) {
+
+?>
+
                             <div class="recipe-card dflex fdcolumn">
                                 <img src="img/recipe01.jpg" alt="Recipe photo">
                                 <div class="recipe-card__text">
@@ -107,21 +128,13 @@
                                     <a href="recipe.html" class="arrow yellow">See the recipe ></a>
                                 </div>
                             </div>
-                            <div class="recipe-card dflex fdcolumn">
-                                <img src="img/recipe01.jpg" alt="Recipe photo">
-                                <div class="recipe-card__text">
-                                    <h3>No Bake White Chocolate Cheesecake</h3>
-                                    <a href="#">
-                                        <p class="card-category">
-                                            cakes
-                                        </p>
-                                    </a>
-                                    <p class="card-time">
-                                        Cooking time: 30 min
-                                    </p>
-                                    <a href="recipe.html" class="arrow yellow">See the recipe ></a>
-                                </div>
-                            </div>
+
+<?php
+
+}
+
+?>
+
                         </div>
                     </aside>
                 </div>
