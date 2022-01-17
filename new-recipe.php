@@ -1,6 +1,6 @@
 <?php
-require_once 'connect.php';
 session_start();
+require_once 'connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,7 @@ session_start();
             <form action="dbnew-recipe.php" method="POST" class="dflex fdcolumn" enctype="multipart/form-data">
                 <div class="dflex">
                     <div class="form-wrapper">
+                    <!-- <input type="hidden" name="id_author" id="id_author"> -->
                         <div class="dflex fdcolumn">
                             <label for="title">Recipe title</label>
                             <input type="text" name="title" id="title">
@@ -32,15 +33,15 @@ session_start();
                         </div>
                         <div class="dflex fdcolumn">
                             <label for="ingredients">Ingredients list</label>
-                            <textarea name="ingredients" id="ingredients" cols="30" rows="5"></textarea>
+                            <textarea name="ingredients" id="ingredients" cols="30" rows="5" placeholder="Please separate each ingredient by a semicolon"></textarea>
                         </div>
                         <div class="dflex fdcolumn">
                             <label for="instructions">Instructions</label>
-                            <textarea name="instructions" id="instructions" cols="30" rows="5"></textarea>
+                            <textarea name="instructions" id="instructions" cols="30" rows="5" placeholder="Please separate each instruction by a semicolon"></textarea>
                         </div>
                         <div class="dflex fdcolumn">
                             <label for="timing">Cooking time</label>
-                            <input type="text" name="timing" id="timing">
+                            <input type="text" name="timing" id="timing" placeholder="E.g., 45 min, 1 h 30 min, etc.">
                         </div>
                     </div>
                     <div class="form-wrapper">

@@ -6,6 +6,7 @@ require_once 'connect.php';
 $blog = $db->query('SELECT `id_recipe`, `author`, `title`, `photo`, `alt_photo`, `category`, `prep_time` FROM `recipe` ORDER BY `id_recipe` ASC');
 
 ob_start();
+
 ?> 
 
 <!DOCTYPE html>

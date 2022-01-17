@@ -31,7 +31,7 @@ ob_start();
                     </li>
                     <li>
                         <figure>
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img src="img/logo.svg" alt="Logo">
                             </a>
                         </figure>
@@ -106,7 +106,7 @@ echo '</div>';
 // require 'views/template.php';
 ?>
 
-                <a href="#" class="arrow">Load more ></a>
+                <!-- <a href="#" class="arrow">Load more ></a> -->
             </div>
         </section>
     </main>
@@ -122,7 +122,7 @@ echo '</div>';
                     </li>
                     <li>
                         <figure>
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img src="img/logo.svg" alt="Logo">
                             </a>
                         </figure>

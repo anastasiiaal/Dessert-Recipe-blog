@@ -19,7 +19,7 @@ if(isset($_POST['login'])) {
 
     if(($user->rowCount()) === 1) {
         if($u['password'] === $password) {
-            $_SESSION['login'] = $login;            
+            $_SESSION['login'] = $login;     
         } else {
             echo "<h3 style='text-align:center; margin-top:20px;'>Login on password is incorrect</h3>";
         }
