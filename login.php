@@ -1,8 +1,32 @@
 <?php
+session_start();
+//session_destroy();
+
 require_once 'connect.php';
 
-$user = $db->query('SELECT * FROM `admin`');
-$user = $user->fetch(PDO::FETCH_ASSOC);
+if(isset($_POST['login'])) {
+    $login = $_POST['login'];
+    $password = $_POST['password'];
+
+    $user = $db->prepare("SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `login` = :loginn");
+    $user->bindParam('loginn', $login, PDO::PARAM_STR);
+    $user->execute();
+    $u = $user->fetch(PDO::FETCH_ASSOC);
+
+
+    // var_dump($user); // affiche la requète
+    // var_dump($user->fetchAll(PDO::FETCH_ASSOC)); //affiche un array
+
+    if(($user->rowCount()) === 1) {
+        if($u['password'] === $password) {
+            $_SESSION['login'] = $login;            
+        } else {
+            echo "<h3 style='text-align:center; margin-top:20px;'>Login on password is incorrect</h3>";
+        }
+    } else {
+        echo "<h3 style='text-align:center; margin-top:20px;'>Login on password is incorrect</h3>";
+    };
+};
 
 ob_start();
 ?> 
@@ -22,7 +46,14 @@ ob_start();
 <body>
     <section id="login">
         <div class="container dflex">
-            <form action="dblogin.php" method="POST">
+
+<?php
+if(isset($_SESSION['login'])) {
+    header('Location: admin.php');
+} else {
+?>
+
+            <form action="#" method="POST">
                 <div class="form-wrapper">
                     <div>
                         <label for="login">Your login</label>
@@ -30,11 +61,13 @@ ob_start();
                     </div>
                     <div>
                         <label for="password">Your password</label>
-                        <input type="text" name="password" id="password">
+                        <input type="password" name="password" id="password">
                     </div>
                 </div>
                 <input type="submit" name="submit" value="Log in" class="add-input">
             </form>
+
+<?php  }  ?>            
         </div>
     </section>
 </body>

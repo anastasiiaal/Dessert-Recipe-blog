@@ -1,4 +1,6 @@
 <?php
+session_start(); 
+
 require_once 'connect.php';
 
 $blog = $db->query('SELECT `id_recipe`, `author`, `title`, `photo`, `alt_photo`, `category`, `prep_time` FROM `recipe` ORDER BY `id_recipe` ASC');
@@ -22,6 +24,11 @@ ob_start();
     <main>
         <section id="admin-main">
             <div class="container">
+
+<?php
+echo "<h3 style='margin-top:50px'>Hello, " . $_SESSION['login'] . "!</h3>";
+?>
+
                 <nav class="nav__category dflex">
                     <ul>
                         <li>
@@ -35,7 +42,7 @@ ob_start();
                         </li>
                     </ul>
                     <div class="logout">
-                        <a href="#" class="dflex">
+                        <a href="logout.php" class="dflex">
                             <img src="img/logout.svg" alt="Log out">
                             <p class="p-id">Log out</p>
                         </a>
