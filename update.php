@@ -4,8 +4,12 @@ require_once 'connect.php';
 
 $id = $_GET['id'];
 
-$recipe = $db->query("SELECT recipe.id_recipe, recipe.title, recipe.description, recipe.ingredients, recipe.instructions, recipe.photo, recipe.alt_photo, recipe.prep_time FROM recipe WHERE recipe.id_recipe = '$id'");
+$recipe = $db->query("SELECT recipe.id_recipe, recipe.title, recipe.description, recipe.ingredients, recipe.instructions, recipe.category, recipe.photo, recipe.alt_photo, recipe.prep_time FROM recipe WHERE recipe.id_recipe = '$id'");
 $recipe = $recipe->fetch(PDO::FETCH_ASSOC);
+
+$catQuery = $db->query("SELECT `id_category`, `name_category` FROM `category`");
+
+$cat = $catQuery->fetchAll(PDO::FETCH_ASSOC);
 
 ob_start();
 ?>
@@ -54,30 +58,36 @@ ob_start();
                     <div class="form-wrapper">
                         <p class="label">Change the category:</p>
                         <div class="dflex fdcolumn radio-wrapper">
+
+<?php
+foreach($cat as $c) {
+    if($c['id_category']===$recipe['category']) {
+?>
+
                             <div>
-                                <input type="radio" id="cakes"
-                                name="category" value="1">
-                                <label for="cakes">Cakes</label>
-                            </div>                           
+                                <input type="radio" id="<?=$c['name_category']?>"
+                                name="category" value="<?=$c['id_category']?>" checked>
+                                <label for="<?=$c['name_category']?>"><?=$c['name_category']?></label>
+                            </div>       
+                            
+<?php
+    } else {
+?> 
                             <div>
-                                <input type="radio" id="cookies"
-                                name="category" value="2">
-                                <label for="cookies">Cookies</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="cupcakes"
-                                name="category" value="3">
-                                <label for="cupcakes">Cupcakes</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="pies"
-                                name="category" value="4">
-                                <label for="pies">Pies</label>
-                            </div>
+                                <input type="radio" id="<?=$c['name_category']?>"
+                                name="category" value="<?=$c['id_category']?>">
+                                <label for="<?=$c['name_category']?>"><?=$c['name_category']?></label>
+                            </div>  
+<?php
+    };
+?>  
+<?php
+}
+?>  
                         </div>
                         <div class="dflex fdcolumn">
                             <label for="img">Choose another image</label>
-                            <input type="file" name="img" id="img">
+                            <input type="file" name="img" id="img" value="<?=$recipe['photo']?>">
                         </div>
                         <div class="dflex fdcolumn">
                             <label for="alt">Alt image</label>

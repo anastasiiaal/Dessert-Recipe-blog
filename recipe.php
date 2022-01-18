@@ -6,7 +6,6 @@ $id = $_GET['id'];
 $recipe = $db->query("SELECT recipe.id_recipe, recipe.title, recipe.description, recipe.photo, recipe.alt_photo, recipe.prep_time, recipe.ingredients, recipe.instructions, recipe.category FROM recipe WHERE recipe.id_recipe = '$id'");
 $recipe = $recipe->fetch(PDO::FETCH_ASSOC);
 
-
 $ingredient = explode(";", $recipe['ingredients']);
 $instruction = explode(";", $recipe['instructions']);
 

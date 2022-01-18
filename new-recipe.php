@@ -1,6 +1,11 @@
 <?php
 session_start();
 require_once 'connect.php';
+
+$catQuery = $db->query("SELECT `id_category`, `name_category` FROM `category`");
+
+$cat = $catQuery->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -47,42 +52,22 @@ require_once 'connect.php';
                     <div class="form-wrapper">
                         <p class="label">Choose a category:</p>
                         <div class="dflex fdcolumn radio-wrapper">
+
+<?php
+foreach($cat as $c) {
+?>
+
                             <div>
-                                <input type="radio" id="cakes"
-                                name="category" value="1">
-                                <label for="cakes">Cakes</label>
-                            </div>                           
-                            <div>
-                                <input type="radio" id="cookies"
-                                name="category" value="2">
-                                <label for="cookies">Cookies</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="cupcakes"
-                                name="category" value="3">
-                                <label for="cupcakes">Cupcakes</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="pies"
-                                name="category" value="4">
-                                <label for="pies">Pies</label>
-                            </div>
+                                <input type="radio" id="<?=$c['name_category']?>"
+                                name="category" value="<?=$c['id_category']?>">
+                                <label for="<?=$c['name_category']?>"><?=$c['name_category']?></label>
+                            </div>       
+                            
+<?php
+}
+?>                           
+
                         </div>
-
-
-<!-- if(isset($_POST['submit'])){
-
-    $path = './img/';
-    $arrayType = ["jpg" => 'image/jpg', "jpeg" => 'image/jpeg'];
-    $name = basename($_FILES['img']['name']);
-
-    if(in_array($_FILES['img']['type'], $arrayType)){
-        move_uploaded_file($_FILES['img']['tmp_name'], $path.$name);
-    } else {
-        echo "Please choose an image in format JPG/JPEG";
-    }
-} -->
-
                         <div class="dflex fdcolumn">
                             <label for="img">Load an image</label>
                             <input type="file" name="img" id="img">

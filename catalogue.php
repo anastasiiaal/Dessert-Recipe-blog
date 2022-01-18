@@ -24,7 +24,8 @@ ob_start();
             <nav class="nav__header">
                 <ul>
                     <li>
-                        <a href="#">Cakes</a>
+                        <a href="catalogue.php?cat=<">Cakes</a> 
+                        <!-- !!!!!!! -->
                     </li>
                     <li>
                         <a href="#">Cookies</a>
