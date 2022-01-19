@@ -34,10 +34,10 @@ $other = $blog->fetch(PDO::FETCH_ASSOC);
             <nav class="nav__header">
                 <ul>
                     <li>
-                        <a href="#">Cakes</a>
+                        <a href="catalogue.php?cat=cakes">Cakes</a>
                     </li>
                     <li>
-                        <a href="#">Cookies</a>
+                        <a href="catalogue.php?cat=cookies">Cookies</a>
                     </li>
                     <li>
                         <figure>
@@ -47,10 +47,10 @@ $other = $blog->fetch(PDO::FETCH_ASSOC);
                         </figure>
                     </li>
                     <li>
-                        <a href="#">Cupcakes</a>
+                        <a href="catalogue.php?cat=cupcakes">Cupcakes</a>
                     </li>
                     <li>
-                        <a href="#">Pies</a>
+                        <a href="catalogue.php?cat=pies">Pies</a>
                     </li>
                 </ul>
             </nav>
@@ -68,7 +68,7 @@ $other = $blog->fetch(PDO::FETCH_ASSOC);
                         <p class="p-description">
                             <?=$recipe['description']?> 
                         </p>
-                        <a href="#">
+                        <a href="catalogue.php?cat=<?=$other['name_category']?>">
                             <p class="card-category">
                                 <?=$other['name_category']?>
                             </p>
@@ -131,7 +131,7 @@ foreach($recomend as $r) {
                                 <img src="<?=$r['photo']?>" alt="<?=$r['alt_photo']?>">
                                 <div class="recipe-card__text">
                                     <h3><?=$r['title']?></h3>
-                                    <a href="#">
+                                    <a href="catalogue.php?cat=<?=$other['name_category']?>">
                                         <p class="card-category">
                                             <?=$other['name_category']?>
                                         </p>
@@ -163,10 +163,10 @@ foreach($recomend as $r) {
             <nav class="nav__footer">
                 <ul>
                     <li>
-                        <a href="#">Cakes</a>
+                        <a href="catalogue.php?cat=cakes">Cakes</a>
                     </li>
                     <li>
-                        <a href="#">Cookies</a>
+                        <a href="catalogue.php?cat=cookies">Cookies</a>
                     </li>
                     <li>
                         <figure>
@@ -176,10 +176,10 @@ foreach($recomend as $r) {
                         </figure>
                     </li>
                     <li>
-                        <a href="#">Cupcakes</a>
+                        <a href="catalogue.php?cat=cupcakes">Cupcakes</a>
                     </li>
                     <li>
-                        <a href="#">Pies</a>
+                        <a href="catalogue.php?cat=pies">Pies</a>
                     </li>
                 </ul>
             </nav>

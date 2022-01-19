@@ -13,7 +13,6 @@ if(isset($_POST['login'])) {
     $user->execute();
     $u = $user->fetch(PDO::FETCH_ASSOC);
 
-
     // var_dump($user); // affiche la requète
     // var_dump($user->fetchAll(PDO::FETCH_ASSOC)); //affiche un array
 

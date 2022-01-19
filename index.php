@@ -1,7 +1,7 @@
 <?php
 require_once 'connect.php';
 
-$blog = $db->query('SELECT recipe.id_recipe, recipe.title, recipe.photo, recipe.alt_photo, recipe.prep_time, category.id_category, category.name_category FROM recipe INNER JOIN category ON recipe.category = category.id_category ORDER BY id_recipe ASC');
+$blog = $db->query('SELECT recipe.id_recipe, recipe.title, recipe.photo, recipe.alt_photo, recipe.prep_time, category.id_category, category.name_category FROM recipe INNER JOIN category ON recipe.category = category.id_category ORDER BY id_recipe ASC LIMIT 9');
 
 ob_start();
 ?> 
@@ -24,10 +24,10 @@ ob_start();
             <nav class="nav__header">
                 <ul>
                     <li>
-                        <a href="#">Cakes</a>
+                        <a href="catalogue.php?cat=cakes">Cakes</a>
                     </li>
                     <li>
-                        <a href="#">Cookies</a>
+                        <a href="catalogue.php?cat=cookies">Cookies</a>
                     </li>
                     <li>
                         <figure>
@@ -37,10 +37,10 @@ ob_start();
                         </figure>
                     </li>
                     <li>
-                        <a href="#">Cupcakes</a>
+                        <a href="catalogue.php?cat=cupcakes">Cupcakes</a>
                     </li>
                     <li>
-                        <a href="#">Pies</a>
+                        <a href="catalogue.php?cat=pies">Pies</a>
                     </li>
                 </ul>
             </nav>
@@ -58,7 +58,7 @@ ob_start();
             <div class="container dflex fdcolumn">
                 <h2 class="tac">Search by category</h2>
                 <div class="categories__wrapper dflex">
-                    <a href="#" class="category dflex fdcolumn">
+                    <a href="catalogue.php?cat=cakes" class="category dflex fdcolumn">
                         <figure>
                             <img src="img/category01.svg" alt="Cakes">
                         </figure>
@@ -66,25 +66,25 @@ ob_start();
                             CAKES
                         </p>
                     </a>
-                    <a href="#" class="category dflex fdcolumn">
+                    <a href="catalogue.php?cat=cookies" class="category dflex fdcolumn">
                         <figure>
-                            <img src="img/category02.svg" alt="Cakes">
+                            <img src="img/category02.svg" alt="Cookies">
                         </figure>
                         <p class="category__text">
                             COOKIES
                         </p>
                     </a>
-                    <a href="#" class="category dflex fdcolumn">
+                    <a href="catalogue.php?cat=cupcakes" class="category dflex fdcolumn">
                         <figure>
-                            <img src="img/category03.svg" alt="Cakes">
+                            <img src="img/category03.svg" alt="Cupakes">
                         </figure>
                         <p class="category__text">
                             CUPCAKES
                         </p>
                     </a>
-                    <a href="#" class="category dflex fdcolumn">
+                    <a href="catalogue.php?cat=pies" class="category dflex fdcolumn">
                         <figure>
-                            <img src="img/category04.svg" alt="Cakes">
+                            <img src="img/category04.svg" alt="Pies">
                         </figure>
                         <p class="category__text">
                             PIES
@@ -107,7 +107,7 @@ while ($recipe = $blog->fetch(PDO::FETCH_ASSOC)) {
                         <img src="<?=$recipe['photo']?>" alt="<?=$recipe['alt_photo']?>">
                         <div class="recipe-card__text">
                             <h3><?=$recipe['title']?></h3>
-                            <a href="#">
+                            <a href="catalogue.php?cat=<?=$recipe['name_category']?>">
                                 <p class="card-category">
                                     <?=$recipe['name_category']?>
                                 </p>
@@ -134,10 +134,10 @@ while ($recipe = $blog->fetch(PDO::FETCH_ASSOC)) {
             <nav class="nav__footer">
                 <ul>
                     <li>
-                        <a href="#">Cakes</a>
+                        <a href="catalogue.php?cat=cakes">Cakes</a>
                     </li>
                     <li>
-                        <a href="#">Cookies</a>
+                        <a href="catalogue.php?cat=cookies">Cookies</a>
                     </li>
                     <li>
                         <figure>
@@ -147,10 +147,10 @@ while ($recipe = $blog->fetch(PDO::FETCH_ASSOC)) {
                         </figure>
                     </li>
                     <li>
-                        <a href="#">Cupcakes</a>
+                        <a href="catalogue.php?cat=cupcakes">Cupcakes</a>
                     </li>
                     <li>
-                        <a href="#">Pies</a>
+                        <a href="catalogue.php?cat=pies">Pies</a>
                     </li>
                 </ul>
             </nav>

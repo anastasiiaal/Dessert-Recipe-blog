@@ -26,13 +26,24 @@ if(isset($_POST['submit'])) {
     $category = $_POST['category'];
     $alt = $_POST['alt'];
 
-    $edited = $db->query("UPDATE `recipe` SET `title` = '$title', `alt_photo` = '$alt', `description` = '$description', `prep_time` = '$timing', `category` = '$category', `ingredients` = '$ingredients', `instructions` = '$instructions' WHERE `id_recipe` = '$id'");
-
     if($newImg) {
         $editedPhoto = $db->query("UPDATE `recipe` SET `photo` = '$insertname' WHERE `id_recipe` = '$id'");
     } else {
         echo "ok";
     }
+    
+    $edited = $db->prepare("UPDATE recipe SET title = :title, alt_photo = :alt, description = :description, prep_time = :timing, category = :category, ingredients = :ingredients, instructions = :instructions WHERE id_recipe = :id");
+
+    $edited->execute([
+        'id' => $id,
+        'title' => $title,
+        'alt' => $alt,
+        'description' => $description,
+        'timing' => $timing,
+        'ingredients' => $ingredients,
+        'instructions' => $instructions,
+        'category' => $category,
+    ]);
 };
 
 if($edited) {
@@ -58,12 +69,10 @@ if($edited) {
 
 // $edited = $db->prepare("UPDATE recipe SET title=?, alt_image=? WHERE id_recipe=?");
 
-// $edited->bindParam('sss', $title, $alt, $id);
+// $edited->bindParam('ssi', $title, $alt, $id);
 // $edited->execute();
 
 // var_dump($edited);
-
-
 
 
 
@@ -79,3 +88,7 @@ if($edited) {
 // // $edited->bindParam('category', $category);
 // $edited->bindParam('id', $id);
 // $edited->execute();
+
+
+
+// $edited = $db->query("UPDATE `recipe` SET `title` = '$title', `alt_photo` = '$alt', `description` = '$description', `prep_time` = '$timing', `category` = '$category', `ingredients` = '$ingredients', `instructions` = '$instructions' WHERE `id_recipe` = '$id'");

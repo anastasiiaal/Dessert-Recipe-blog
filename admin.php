@@ -3,10 +3,9 @@ session_start();
 
 require_once 'connect.php';
 
-$blog = $db->query('SELECT `id_recipe`, `author`, `title`, `photo`, `alt_photo`, `category`, `prep_time` FROM `recipe` ORDER BY `id_recipe` ASC');
+$blog = $db->query('SELECT `id_recipe`, `author`, `title`, `photo`, `alt_photo`, `category`, `prep_time` FROM `recipe` ORDER BY `id_recipe` DESC');
 
 ob_start();
-
 ?> 
 
 <!DOCTYPE html>
@@ -25,21 +24,19 @@ ob_start();
     <main>
         <section id="admin-main">
             <div class="container">
-
 <?php
 echo "<h3 style='margin-top:50px'>Hello, " . $_SESSION['login'] . "!</h3>";
 ?>
-
                 <nav class="nav__category dflex">
                     <ul>
                         <li>
                             Filter:
                         </li>
                         <li>
-                            <a href="#">The newest recipes</a>
+                            <a href="#" class="category-active">The newest recipes</a>
                         </li>
                         <li>
-                            <a href="#" class="category-active">The oldest recipes</a>
+                            <a href="#">The oldest recipes</a>
                         </li>
                     </ul>
                     <div class="logout">
@@ -50,8 +47,6 @@ echo "<h3 style='margin-top:50px'>Hello, " . $_SESSION['login'] . "!</h3>";
                     </div>
                 </nav>
                 <a href="new-recipe.php" class="admin-btn add-btn">Add new recipe +</a>
-                
-
 <?php
 echo '<div class="latest__card-wrapper dflex">';
 while ($recipe = $blog->fetch(PDO::FETCH_ASSOC)) {
@@ -71,12 +66,7 @@ while ($recipe = $blog->fetch(PDO::FETCH_ASSOC)) {
                     </div>
 <?php
 }  
-
 echo '</div>';
-
-// $content = ob_get_clean();
-
-// require 'views/template.php';
 ?>
             </div>
         </section>
