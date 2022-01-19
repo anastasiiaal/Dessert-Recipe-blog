@@ -7,6 +7,7 @@ $catQuery = $db->query("SELECT id_category, name_category FROM category");
 $catList = $catQuery->fetchAll(PDO::FETCH_ASSOC);
 
 ob_start();
+
 ?> 
 
 <!DOCTYPE html>

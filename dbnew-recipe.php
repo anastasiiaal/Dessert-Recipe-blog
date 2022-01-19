@@ -14,6 +14,7 @@ $alt = $_POST['alt'];
 $author = "1";
 
 
+
 if(isset($_POST['submit'])) {
 
     $path = './img/';

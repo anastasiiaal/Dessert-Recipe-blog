@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 session_start();
 require_once 'connect.php';
@@ -51,10 +51,6 @@ if($edited) {
 } else {
     echo "Ooups, something went wrong";
 };
-
-
-
-
 
 
 

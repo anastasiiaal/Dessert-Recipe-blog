@@ -12,7 +12,6 @@ $instruction = explode(";", $recipe['instructions']);
 $blog = $db->query("SELECT recipe.id_recipe, category.id_category, category.name_category FROM recipe INNER JOIN category ON recipe.category = category.id_category WHERE recipe.id_recipe = '$id'");
 $other = $blog->fetch(PDO::FETCH_ASSOC);
 
-
 // ob_start();
 ?> 
 
