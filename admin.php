@@ -6,6 +6,8 @@ require_once 'connect.php';
 $blog = $db->query('SELECT `id_recipe`, `author`, `title`, `photo`, `alt_photo`, `category`, `prep_time` FROM `recipe` ORDER BY `id_recipe` DESC');
 
 ob_start();
+
+if(isset($_SESSION['login'])) {
 ?> 
 
 <!DOCTYPE html>
@@ -73,3 +75,8 @@ echo '</div>';
     </main>
 </body>
 </html>
+
+<?php    
+} else {
+    header('Location: login.php');
+}
