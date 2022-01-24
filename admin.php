@@ -3,7 +3,11 @@ session_start();
 
 require_once 'connect.php';
 
-$blog = $db->query('SELECT `id_recipe`, `author`, `title`, `photo`, `alt_photo`, `category`, `prep_time` FROM `recipe` ORDER BY `id_recipe` DESC');
+if(isset($_GET['asc'])) {
+    $blog = $db->query('SELECT `id_recipe`, `author`, `title`, `photo`, `alt_photo`, `category`, `prep_time` FROM `recipe` ORDER BY `id_recipe` ASC');
+} else {
+    $blog = $db->query('SELECT `id_recipe`, `author`, `title`, `photo`, `alt_photo`, `category`, `prep_time` FROM `recipe` ORDER BY `id_recipe` DESC');
+}
 
 ob_start();
 
@@ -35,10 +39,10 @@ echo "<h3 style='margin-top:50px'>Hello, " . $_SESSION['login'] . "!</h3>";
                             Filter:
                         </li>
                         <li>
-                            <a href="#" class="category-active">The newest recipes</a>
+                            <a href="admin.php" <?= !isset($_GET['asc']) ? 'class="category-active"' : '' ?>">The newest recipes</a>
                         </li>
                         <li>
-                            <a href="#">The oldest recipes</a>
+                            <a href="admin.php?asc" <?= isset($_GET['asc']) ? 'class="category-active"' : '' ?>>The oldest recipes</a>
                         </li>
                     </ul>
                     <div class="logout">
