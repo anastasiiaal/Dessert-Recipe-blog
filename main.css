@@ -694,6 +694,12 @@ p.label {
     color: #E96E15;
 }
 
+.radio-wrapper > div > label,
+.radio-wrapper > div > input,
+input.add-input {
+    cursor: pointer;
+}
+
 input[type='radio']:after {
     width: 11px;
     height: 11px;
