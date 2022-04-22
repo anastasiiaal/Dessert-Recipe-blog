@@ -1,6 +1,20 @@
-# Dessert-Recipe-blog
-Projet d'études : création d'un blog de recettes de desserts
+# 🍰 Dessert-Recipe-blog 
+Individual Study project | Made in Annecy, France with 🧡
+January, 2022
 
-[Maquette Figma](https://www.figma.com/file/jat5KkJHTBOMAZ12riO2r5/HOME-CHEF-desserts?node-id=0%3A1)
+## 🧁 Main goals
+* Design and code a dessert recipe blog
+* Create an admin dashboard to add new recipies / make changes in already existing recipies
 
-Accès aux pages administration => login.php | login "admin", MDP "password"
+## 🥞 Tools implemented
+* Figma | design
+* HTML CSS | code 
+* PHP | connect to database
+* MySQL | create the DB
+
+## 🥮 Design and wireframe
+[Figma Design File](https://www.figma.com/file/jat5KkJHTBOMAZ12riO2r5/HOME-CHEF-desserts?node-id=0%3A1)
+
+## 🍭 Access to admin dashboard
+* => page login.php
+* login "admin", password "password"
