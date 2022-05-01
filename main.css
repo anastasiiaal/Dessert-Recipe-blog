@@ -6,6 +6,10 @@
     font-size: 10px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     color: #49250B;
     font-family: 'Josefin Sans', sans-serif;

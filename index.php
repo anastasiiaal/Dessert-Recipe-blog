@@ -141,7 +141,7 @@ while ($recipe = $blog->fetch(PDO::FETCH_ASSOC)) {
                     </li>
                     <li>
                         <figure>
-                            <a href="index.php">
+                            <a href="#">
                                 <img src="img/logo.svg" alt="Logo">
                             </a>
                         </figure>
