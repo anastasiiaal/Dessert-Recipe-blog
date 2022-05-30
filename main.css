@@ -504,12 +504,22 @@ aside > div > .recipe-card {
         width: 90%;
     }
 
+    header {
+        height: 80px;
+    }
+
     .nav__header > ul > li > a {
         display: none;
     }
 
+    .nav__header figure img {
+        transform: scale(0.8);
+    }
+
     .nav__header figure {
-        left: -20px;
+        left: -12px;
+        padding: 3px;
+        margin-top: -5px;
     }
 
     .nav__footer > ul {
